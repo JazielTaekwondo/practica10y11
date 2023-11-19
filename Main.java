@@ -4,5 +4,6 @@ public class Main {
         System.out.println("Hola mundo");
         Secuencia alfa = new Secuencia();
         alfa.crearArchivo();
+        alfa.leerArchivo();
     }
 }
