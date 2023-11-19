@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Secuencia {
-    void crearArchivo(){
+    public void crearArchivo(){
         String texto = "insisto ya me quiero dormir";
         // Obtiene la ruta del directorio actual
         String directorioActual = System.getProperty("user.dir");
