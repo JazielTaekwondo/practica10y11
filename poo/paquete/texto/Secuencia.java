@@ -21,7 +21,7 @@ public class Secuencia {
         this.rutaSecuencia = directorioActual + "/secuencia.txt";
         this.rutaRegalos = directorioActual + "/regalos.txt";
     }
-
+    
     public void crearArchivo(){
        try{
             FileWriter fw = new FileWriter(this.rutaSecuencia);
