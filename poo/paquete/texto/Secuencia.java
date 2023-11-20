@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Stack;
 
 public class Secuencia {
     public String crearArchivo(){
@@ -22,12 +23,23 @@ public class Secuencia {
     public void leerArchivo(){
         String directorioActual = System.getProperty("user.dir");// Obtiene la ruta del directorio actual
         String rutaArchivo = directorioActual + "/12_dias.txt";
+        Stack<String> pila = new Stack<>();
+        String linea, parrafo="";
         try {
             FileReader fileReader = new FileReader(rutaArchivo);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String linea; 
+            BufferedReader bufferedReader = new BufferedReader(fileReader); 
             while ((linea = bufferedReader.readLine()) != null) {
-                System.out.println(linea);
+                parrafo=parrafo+linea+"\n";
+                if (linea.trim().isEmpty()){// Devuelve true si la longitud de una linea es 0, por lo tanto se asume que acaba un parafo
+                    //System.out.println(parrafo);
+                    pila.push(parrafo);
+                    parrafo="";
+                }
+            }
+            pila.push(parrafo); //Añade el ultimo parrafo
+            int n= pila.size();
+            for (int i = 0; i < n; i++) {
+                System.out.println(pila.pop());
             }
             bufferedReader.close(); 
         } catch (IOException e) {
